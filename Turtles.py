@@ -279,9 +279,9 @@ Intro = [talk_wordy_to_me("the challenge", 0, 4, 300, "white", 0),
          talk_wordy_to_me("ilk", 0, 4, -260, "blue", 0),
          talk_wordy_to_me("", 0, 4, -390, "white", 0), time.sleep(2), tur.clear(), wn.mainloop()]
 Sizes = [300, 160, 20, -120, -260, -390]
-wn.exitonclick()
 
 # The code below (for some stupid reason) doesn't work.
+exit()
 print("Please input your text below! (13 characters per line, only letters, apostrophes, and commas | no numbers)")
 while True:
     Initials = input('Text: ')
@@ -297,4 +297,3 @@ while True:
             talk_wordy_to_me(Initials, 0, 4, 0, "white", 0)
         time.sleep(2)
         wn.mainloop()
-exit()
