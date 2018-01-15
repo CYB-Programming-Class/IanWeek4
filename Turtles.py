@@ -184,13 +184,13 @@ def apostrophe_(size, weight, x, y):
 
 
 def talk_wordy_to_me(text, size, weight, y, color, underline):
-    sp = 0
+    sp = 0 # MAROLSI: what is sp??????
     tur.color(color)
-    xp = len(text) * -30 - (size * 2) - 40
-    x_memory = xp
+    xp = len(text) * -30 - (size * 2) - 40 # MAROLSI: what is xp??????
+    x_memory = xp # MAROLSI: what is x_memory?????
     word = []
     for xx in range(len(text)):
-        word.append(ord(text[xx]) - 97)
+        word.append(ord(text[xx]) - 97) # MAROLSI: what is happening here and what does ord do????
     for I in range(len(word)):
         a_(size, weight, xp + sp, y) if word[I] == 0 else None
         b_(size, weight, xp + sp, y) if word[I] == 1 else None
@@ -220,17 +220,15 @@ def talk_wordy_to_me(text, size, weight, y, color, underline):
         z_(size, weight, xp + sp, y) if word[I] == 25 else None
         comma_(size, weight, xp + sp, y) if word[I] == -53 else None
         apostrophe_(size, weight, xp + sp, y) if word[I] == -58 else None
-        xp += 60 + (size * 1.5) + (weight * 2)
+        xp += 60 + (size * 1.5) + (weight * 2) # MAROLSI: why this brilliant calculation???
     if underline > 0:
         tur.up()
-        tur.goto(x_memory - 10, y - 10)
+        tur.goto(x_memory - 10, y - 10) # MAROLSI: aahhh.... now I see what it's for. Still needs comment above.
         tur.down()
         tur.goto(xp + 10, y - 10)
 
 
 # Unnecessary, but still fun, I added a particle generator to make some fun little additions.
-
-
 def particle(kind, x, y, color):
     tur.color(color)
     tur.pensize(16)
@@ -242,13 +240,13 @@ def particle(kind, x, y, color):
     [(tur.forward(10), tur.right(20)) for _ in range(18)] if kind == "circle" else None
     [(tur.right(10)) for _ in range(1)] if kind == "spot" else None
 
-
 tur = turtle.Turtle()
 tur.shape('circle')
 tur.speed("fastest")
 wn = turtle.Screen()
 wn.bgcolor("black")
 tur.hideturtle()
+# MAROLSI: convention is lower case for "Intro" variable
 Intro = [talk_wordy_to_me("the challenge", 0, 4, 300, "white", 0),
          talk_wordy_to_me("was to draw my", 0, 4, 160, "white", 0),
          talk_wordy_to_me("initials with", 0, 4, 20, "white", 0),
@@ -278,9 +276,12 @@ Intro = [talk_wordy_to_me("the challenge", 0, 4, 300, "white", 0),
          talk_wordy_to_me("by", 0, 4, -120, "grey", 0),
          talk_wordy_to_me("ilk", 0, 4, -260, "blue", 0),
          talk_wordy_to_me("", 0, 4, -390, "white", 0), time.sleep(2), tur.clear(), wn.mainloop()]
-Sizes = [300, 160, 20, -120, -260, -390]
+Sizes = [300, 160, 20, -120, -260, -390] # MAROLSI: what is sizes for?????
 
 # The code below (for some stupid reason) doesn't work.
+#
+# MAROLSI: likely due to something called multithreading. The turtle screen is probably on a separate thread from the main thread.
+# Not sure how to fix this atm, but maybe we can revisit later if we discuss multithreading
 exit()
 print("Please input your text below! (13 characters per line, only letters, apostrophes, and commas | no numbers)")
 while True:
